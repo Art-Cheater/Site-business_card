@@ -87,24 +87,27 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', async () => {
-        try {
-            const response = await fetch('http://127.0.0.1:5000/api/reviews'); // URL API
-            const reviews = await response.json();
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const response = await fetch('https://site-business-card.onrender.com/api/reviews'); // Новый URL API
+        const reviews = await response.json();
 
-            const reviewsContainer = document.getElementById('reviews-container');
-            reviews.forEach(review => {
-                const reviewItem = document.createElement('div');
-                reviewItem.textContent = review.text; // Текст отзыва
-                reviewItem.style.border = '1px solid #ccc';
-                reviewItem.style.margin = '10px';
-                reviewItem.style.padding = '10px';
-                reviewsContainer.appendChild(reviewItem);
-            });
-        } catch (error) {
-            console.error('Ошибка загрузки отзывов:', error);
-        }
-    });
+        const reviewsContainer = document.getElementById('reviews-container');
+        reviewsContainer.innerHTML = ''; // Очистка контейнера
+
+        reviews.forEach(review => {
+            const reviewItem = document.createElement('div');
+            reviewItem.textContent = review.text; // Текст отзыва
+            reviewItem.style.border = '1px solid #ccc';
+            reviewItem.style.margin = '10px';
+            reviewItem.style.padding = '10px';
+            reviewsContainer.appendChild(reviewItem);
+        });
+    } catch (error) {
+        console.error('Ошибка загрузки отзывов:', error);
+    }
+});
+
 </script>
 
 <footer id="contacts" class="screen">

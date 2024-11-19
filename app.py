@@ -21,6 +21,10 @@ def get_reviews():
     reviews = [{"id": row[0], "text": row[1]} for row in rows]
     print(reviews)
     return jsonify(reviews)
+@app.route('/')
+def home():
+    return "API is running. Access the reviews endpoint at /api/reviews"
+
 
 
 if __name__ == '__main__':

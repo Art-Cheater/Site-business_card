@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 from flask_cors import CORS  # Импортируем CORS
 import sqlite3
+import os
 
 app = Flask(__name__)
 CORS(app)  # Включаем CORS для всего приложения
@@ -23,4 +24,5 @@ def get_reviews():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Получаем порт из переменных окружения
+    app.run(host="0.0.0.0", port=port, debug=True)

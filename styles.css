@@ -1,3 +1,4 @@
+/* Общие стили */
 * {
   margin: 0;
   padding: 0;
@@ -5,14 +6,36 @@
 }
 
 body {
-  font-family: 'Arial', sans-serif;
-  color: black;
-  background-color: white;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
 }
 
+.contacts {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px; /* Разделение между контактами */
+}
+.contacta-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contacta-item img {
+  width: 40px; /* Устанавливаем нормальный размер иконок */
+  height: 40px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Шапка сайта */
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -20,16 +43,15 @@ body {
   padding: 10px;
   background-color: white;
   border-bottom: 1px solid black;
-  position: sticky;
-  width: 100%;
   top: 0;
+  z-index: 10;
 }
 
 .logo {
   width: 50px;
 }
 
-.header-text, .header-phone {
+.header-text {
   font-size: 18px;
 }
 
@@ -39,105 +61,212 @@ body {
   border: 2px solid black;
   border-radius: 40px;
   cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.header-button:hover {
+  transform: translateY(-5px);
 }
 
 .social-icon img {
-  width: 24px;
-  margin-left: 10px;
+  width: 40px; /* Уменьшаем размер иконок */
+  height: 40px;
+  transition: transform 0.3s ease;
 }
 
+.social-icon:hover img {
+  transform: translateY(-5px); /* Эффект подъема при наведении */
+}
+
+/* Навигация */
 .nav-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
   background-color: white;
-  padding: 15px 0;
-  margin-top: 10px;
   border-bottom: 1px solid black;
+  gap: 20px;
   position: sticky;
-  width: 100%;
-  top: 50px;
+  top: 0;
+  z-index: 10;
 }
 
 .nav-link {
   text-decoration: none;
   font-size: 18px;
   color: black;
-  padding: 5px;
 }
 
 .nav-link:hover {
-  text-decoration: underline;
+  color: #007BFF;
 }
 
-.screen {
-  width: 90%;
-  margin: 0 auto;
-  padding: 20px;
-  max-width: 1200px;
-  text-align: center;
+/* Секции */
+.section-container {
+  padding: 50px 20px;
+  background-color: #f4f4f4;
 }
 
-.about-text {
-  max-width: 800px;
-  margin: 0 auto;
-  font-size: 18px;
+.section-container:nth-child(even) {
+  background-color: #eaeaea;
 }
 
+/* Умения */
 .skills {
   display: flex;
   justify-content: space-around;
-  margin-top: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .skill-item {
   text-align: center;
-  width: 200px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
 }
 
 .skill-item img {
   width: 100px;
-  margin-bottom: 10px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
+/* Проекты */
 .projects {
   display: flex;
   justify-content: space-around;
-  margin-top: 30px;
+  flex-wrap: wrap;
+  gap: 30px; /* Увеличиваем отступ между проектами */
 }
 
 .project-item {
   text-align: center;
-  width: 200px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.project-item:hover {
+  transform: translateY(-10px); /* Больше эффект подъема */
 }
 
 .project-item img {
-  width: 200px;
+  width: 200px; /* Увеличиваем размер картинок */
   height: 200px;
   object-fit: cover;
+  border-radius: 10px;
 }
 
-footer {
-  padding: 50px;
+.project-item a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-item p {
+  margin-top: 10px;
+  font-size: 18px; /* Увеличиваем текст */
+}
+
+.project-item a:hover {
+  color: #007BFF;
+}
+
+/* Главная секция */
+.nachalo {
+  background-image: url("foro.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.nachalo h1 {
+  font-size: 48px;
+}
+
+/* Карусель */
+.reviews-carousel {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%; /* Ограничение по ширине */
+}
+
+.reviews-wrapper {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.review-item {
+  flex: 0 0 33.33%; /* Три отзыва в ряд */
+  box-sizing: border-box;
+  padding: 20px;
   text-align: center;
-  background-color: #f0f0f0;
 }
 
-footer img {
-  width: 20px;
-  margin-right: 10px;
+.review-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
 
+.review-item h3 {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.review-item p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Кнопки карусели */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+#prev-btn {
+  left: 10px;
+}
+
+#next-btn {
+  right: 10px;
+}
+
+.carousel-btn:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+/* Адаптивность */
 @media (max-width: 768px) {
-  .nav-container {
+  .header-container, .nav-container {
     flex-direction: column;
-    text-align: center;
+  }
+
+  .nav-link {
+    margin: 10px 0;
   }
 
   .skills, .projects {
     flex-direction: column;
-    align-items: center;
   }
-  .header { 
-    font-size: 14px; 
-  } 
 }

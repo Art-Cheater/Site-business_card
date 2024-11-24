@@ -2,6 +2,7 @@ from flask import Flask, jsonify
 from flask_cors import CORS  # Импортируем CORS
 import sqlite3
 import os
+import base64
 
 app = Flask(__name__)
 CORS(app)  # Включаем CORS для всего приложения
@@ -13,18 +14,26 @@ def get_reviews():
     cursor = conn.cursor()
 
     # Извлекаем все отзывы из базы
-    cursor.execute("SELECT id, text FROM reviews")
+    cursor.execute("SELECT id, name, photo, text FROM reviews")
     rows = cursor.fetchall()
     conn.close()
 
     # Преобразуем данные в JSON-формат
-    reviews = [{"id": row[0], "text": row[1]} for row in rows]
-    print(reviews)
+    reviews = []
+    for row in rows:
+        review = {
+            "id": row[0],
+            "name": row[1],
+            "photo": base64.b64encode(row[2]).decode('utf-8') if row[2] else None,  # Преобразуем фото в Base64
+            "text": row[3]
+        }
+        reviews.append(review)
+
     return jsonify(reviews)
+
 @app.route('/')
 def home():
     return "API is running. Access the reviews endpoint at /api/reviews"
-
 
 
 if __name__ == '__main__':
